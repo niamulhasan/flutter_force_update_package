@@ -125,4 +125,4 @@ Stack(
 
 ## Additional information
 
-If you want to contribute to the project please go to our github repo [GitHub](https://github.com/niamulhasan/)
+If you want to contribute to the project please go to our github repo [GitHub](https://github.com/niamulhasan/flutter_force_update_package)

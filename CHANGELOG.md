@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.0.2
 
-* TODO: Describe initial release.
+* IOS Dialog Not showing issue Fix.
+* Opens url in browser issue Fix.
