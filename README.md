@@ -2,8 +2,9 @@ A flutter widget to show the user if there is an update available of your app fr
 
 ## Features
 
-*   A widget to show if you have an update of your app
-*   Note that this is an `widget` not a page (not a route) so use this widget as an overlay, (see the example at bottom)
+* A widget to show if you have an update of your app
+* Note that this is an `widget` not a page (not a route) so use this widget as an overlay, (see the
+  example at bottom)
 
 ## Getting started
 
@@ -47,7 +48,8 @@ ForceUpdatePrompt(
 
 ## Implementation of `validate()`
 
-**It has an helper** `**ForceUpdateUtils.getRemoteUpdateStatus()**` **method if you want to fetch latest version info from an API endpoint**
+**It has an helper** `**ForceUpdateUtils.getRemoteUpdateStatus()**` **method if you want to fetch
+latest version info from an API endpoint**
 
 ##### Example
 
@@ -75,6 +77,8 @@ As the helper using a internal data model class for this specific JSON formate
 
 **A Full Example**  
 Notice that the widget is used as an overlay
+
+### If you want to make the update decision on client side.
 
 ```plaintext
 Stack(
@@ -123,6 +127,41 @@ Stack(
         );
 ```
 
+### If you want to make the update decision on server side.
+
+```plaintext
+FutureBuilder(
+future: ForceUpdateUtils.postLocalInfoForRemoteDecision(
+"https://developers.romoni.com.bd/api/v3.0/check-version"),
+builder: (context, sn) {
+if (sn.hasData && sn.data != null) {
+ForceUpdateRemoteDecision data =
+sn.data as ForceUpdateRemoteDecision;
+return UpdateWidget(
+transparentBackground: true,
+backgroundColor: Colors.red,
+logo: Image.network("https://picsum.photos/200"),
+message: data.message ?? "New version available",
+textColor: Colors.purple,
+updateButton: Padding(
+padding: const EdgeInsets.symmetric(horizontal: 40.0),
+child: MyButton(
+text: "Update Now",
+),
+),
+skipButton: Padding(
+padding: const EdgeInsets.symmetric(horizontal: 40.0),
+child: MyButton(
+text: "Skip",
+),
+), isPriorityHigh: data.isMajor ?? false,);
+}
+return Text("Loading");
+},
+)
+```
+
 ## Additional information
 
-If you want to contribute to the project please go to our github repo [GitHub](https://github.com/niamulhasan/flutter_force_update_package)
+If you want to contribute to the project please go to our github
+repo [GitHub](https://github.com/niamulhasan/flutter_force_update_package)
