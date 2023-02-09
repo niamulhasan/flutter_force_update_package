@@ -1,3 +1,3 @@
-## 0.0.2
+## 0.0.4
 
-* Server side update status check classes and functionality added 
+* DOC Updated

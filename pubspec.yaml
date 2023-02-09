@@ -1,6 +1,6 @@
 name: flutter_force_update
 description: A flutter widget to show the user if there is an update available of your app from an api endpoint.
-version: 0.0.2
+version: 0.0.4
 homepage: https://niamulhasan.me/
 
 environment:

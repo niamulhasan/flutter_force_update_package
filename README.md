@@ -59,7 +59,7 @@ ForceUpdateUtils.getRemoteUpdateStatus("https://62b43f19530b26da4cb9fcc0.mockapi
 
 If you want to use this build in helper you response must look like this
 
-```plaintext
+```json
 [
   {
     "message": "New Update is available!",
@@ -80,7 +80,7 @@ Notice that the widget is used as an overlay
 
 ### If you want to make the update decision on client side.
 
-```plaintext
+```dart
 Stack(
           children: [
             isLoading
@@ -129,39 +129,38 @@ Stack(
 
 ### If you want to make the update decision on server side.
 
-```plaintext
+```dart
 FutureBuilder(
-future: ForceUpdateUtils.postLocalInfoForRemoteDecision(
-"https://developers.romoni.com.bd/api/v3.0/check-version"),
-builder: (context, sn) {
-if (sn.hasData && sn.data != null) {
-ForceUpdateRemoteDecision data =
-sn.data as ForceUpdateRemoteDecision;
-return UpdateWidget(
-transparentBackground: true,
-backgroundColor: Colors.red,
-logo: Image.network("https://picsum.photos/200"),
-message: data.message ?? "New version available",
-textColor: Colors.purple,
-updateButton: Padding(
-padding: const EdgeInsets.symmetric(horizontal: 40.0),
-child: MyButton(
-text: "Update Now",
-),
-),
-skipButton: Padding(
-padding: const EdgeInsets.symmetric(horizontal: 40.0),
-child: MyButton(
-text: "Skip",
-),
-), isPriorityHigh: data.isMajor ?? false,);
-}
-return Text("Loading");
-},
+  future: ForceUpdateUtils.postLocalInfoForRemoteDecision(
+  "https://youryrlhere.com/check-for-update"),
+  builder: (context, sn) {
+    if (sn.hasData && sn.data != null) {
+      ForceUpdateRemoteDecision data = sn.data as ForceUpdateRemoteDecision;
+      return UpdateWidget(
+        transparentBackground: true,
+        backgroundColor: Colors.red,
+        logo: Image.network("https://picsum.photos/200"),
+        message: data.message ?? "New version available",
+        textColor: Colors.purple,
+        updateButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+            child: MyButton(
+            text: "Update Now",
+          ),
+        ),
+        skipButton: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40.0),
+          child: MyButton(
+          text: "Skip",
+        ),
+      ), 
+      isPriorityHigh: data.isMajor ?? false,);
+    }
+    return Text("Loading");
+    },
 )
 ```
 
 ## Additional information
-
 If you want to contribute to the project please go to our github
 repo [GitHub](https://github.com/niamulhasan/flutter_force_update_package)
