@@ -86,7 +86,7 @@ class _UpdateWidgetState extends State<UpdateWidget> {
 
                             LaunchReview.launch(
                                 androidAppId: "$packageName",
-                                iOSAppId: "tech.nagorik.mymatch");
+                                iOSAppId: packageInfo.packageName);
                           },
                           child: widget.updateButton,
                         ),
