@@ -15,6 +15,8 @@ class UpdateWidget extends StatefulWidget {
     required this.updateButton,
     required this.isPriorityHigh,
     required this.skipButton,
+    required this.iosAppId,
+    required this.shouldWriteReview,
   }) : super(key: key);
 
   final bool transparentBackground;
@@ -25,6 +27,8 @@ class UpdateWidget extends StatefulWidget {
   final Widget updateButton;
   final bool isPriorityHigh;
   final Widget skipButton;
+  final String iosAppId;
+  final bool shouldWriteReview;
 
   @override
   State<UpdateWidget> createState() => _UpdateWidgetState();
@@ -85,8 +89,10 @@ class _UpdateWidgetState extends State<UpdateWidget> {
                             // }
 
                             LaunchReview.launch(
-                                androidAppId: "$packageName",
-                                iOSAppId: packageInfo.packageName);
+                              androidAppId: "$packageName",
+                              iOSAppId: widget.iosAppId,
+                              writeReview: widget.shouldWriteReview,
+                            );
                           },
                           child: widget.updateButton,
                         ),
